@@ -201,8 +201,28 @@ if __name__ == '__main__':
     full_pose_evaluator = FullPoseEvaluator()
 
     # Note: to evaluate Absolute Jitter Error, use full_pose_evaluator
-    print('\n')
-    evaluate(net, paths.totalcapture_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_tran=True, evaluate_zmp=True, flush_cache=False)
 
+    # # evaluate totalcapture
+    # print('\n')
+    # evaluate(net, paths.totalcapture_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_tran=True, evaluate_zmp=True, flush_cache=False)
+    
+    # # evaluate dip
+    # print('\n')
+    # evaluate(net, paths.dipimu_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_zmp=True, flush_cache=False)
+
+    # ==== loose clothing dataset ====
+    # run and evaluate PIP on the tight IMU readings
     print('\n')
-    evaluate(net, paths.dipimu_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_zmp=True, flush_cache=False)
+    evaluate(net, paths.tightimu_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_tran=False, evaluate_zmp=False, 
+             flush_cache=True, plt_tran=False)
+    
+    # run and evaluate PIP on the loose IMU readings  
+    print('\n')
+    evaluate(net, paths.looseimu_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_tran=False, evaluate_zmp=False, 
+            flush_cache=True, plt_tran=False)
+    
+    # run and evaluate PIP on your filtered loose IMU readings
+    print('\n')
+    evaluate(net, paths.filteredimu_dir, pose_evaluator=reduced_pose_evaluator, evaluate_pose=True, evaluate_tran=False, evaluate_zmp=False, 
+            flush_cache=True, plt_tran=False)
+        

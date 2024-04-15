@@ -6,9 +6,8 @@ r"""
 # datasets (directory names) in AMASS
 # e.g., for ACCAD, the path should be `paths.raw_amass_dir/ACCAD/ACCAD/s001/*.npz`
 amass_data = ['HumanEva', 'MPI_HDM05', 'SFU', 'MPI_mosh', 'Transitions_mocap', 'SSM_synced', 'CMU',
-              'TotalCapture', 'Eyes_Japan_Dataset', 'KIT', 'BMLmovi', 'EKUT', 'TCD_handMocap', 'ACCAD',
+              'Eyes_Japan_Dataset', 'KIT', 'BMLmovi', 'EKUT', 'TCD_handMocap', 'ACCAD',
               'BioMotionLab_NTroje', 'BMLhandball', 'MPI_Limits', 'DFaust67']
-
 
 class paths:
     raw_amass_dir = 'data/dataset_raw/AMASS'      # raw AMASS dataset path (raw_amass_dir/ACCAD/ACCAD/s001/*.npz)
@@ -30,6 +29,9 @@ class paths:
     weights_file = 'data/weights.pt'                # network weight file
     physics_parameter_file = 'physics_parameters.json'   # physics hyperparameters
 
+    looseimu_dir = '../data/clothing/loose'
+    tightimu_dir = '../data/clothing/tight'
+    filteredimu_dir = '../data/clothing/filtered'
 
 class joint_set:
     leaf = [7, 8, 12, 20, 21]
